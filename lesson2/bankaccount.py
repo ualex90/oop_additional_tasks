@@ -12,20 +12,20 @@
 
 
 class BankAccount:
-    def __init__(self, balance):
+    def __init__(self, balance: float) -> None:
         self.__balance = balance
 
     @property
-    def balance(self):
+    def balance(self) -> float:
         return self.__balance
 
-    def deposit(self, amount):
+    def deposit(self, amount: float) -> None:
         self.__balance += amount
 
-    def withdraw(self, amount):
+    def withdraw(self, amount: float) -> None:
         self.__balance -= amount
 
-    def close(self):
+    def close(self) -> float:
         money = self.__balance
         self.__balance = 0
         return money
