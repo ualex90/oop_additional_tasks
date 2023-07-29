@@ -9,7 +9,7 @@
 - is_square(width, height): статический метод, принимающий ширину и высоту прямоугольника и возвращающий True,
 если это квадрат, и False в противном случае
 """
-from math import degrees, tan, atan, cos, sin, asin
+from math import atan, cos, sin
 
 
 class Rectangle:
@@ -26,9 +26,10 @@ class Rectangle:
     @classmethod
     def from_diagonal(cls, diagonal: float, aspect_ratio: float) -> 'Rectangle':
         pass
-        # alpha = degrees(atan(1 / aspect_ratio))
-        # print(alpha)
-        # return cls(1,1)
+        alpha = atan(1 / aspect_ratio)
+        a = diagonal * cos(alpha)
+        b = diagonal * sin(alpha)
+        return cls(a, b)
 
     @staticmethod
     def is_square(width: float, height: float) -> bool:
@@ -42,7 +43,5 @@ print(rectangle.perimeter())  # 18
 rectangle2 = Rectangle.from_diagonal(5, 2)
 print(rectangle2.area())  # 10.0128
 print(rectangle2.perimeter())  # 13.42
-print(rectangle2.width)
-print(rectangle2.height)
 print(Rectangle.is_square(4, 4))  # True
 print(Rectangle.is_square(4, 5))  # False
