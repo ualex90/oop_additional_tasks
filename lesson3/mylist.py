@@ -8,10 +8,26 @@
 - __len__(self): магический метод, возвращающий длину списка;
 - __add__(self, other): магический метод, который позволяет складывать списки и возвращать новый список.
 """
+import copy
 
 
 class MyList:
-    pass
+    def __init__(self, data: list) -> None:
+        self.data = data
+
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}({self.data})'
+
+    def __str__(self) -> str:
+        return f'{self.data}'
+
+    def __len__(self) -> int:
+        return len(self.data)
+
+    def __add__(self, other: 'MyList') -> 'MyList':
+        new = copy.deepcopy(self.data)
+        new.extend(other.data)
+        return MyList(new)
 
 
 my_list1 = MyList([1, 2, 3])
