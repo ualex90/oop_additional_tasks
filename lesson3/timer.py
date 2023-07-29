@@ -9,19 +9,19 @@ from time import perf_counter, sleep
 
 
 class Timer:
-    def __init__(self):
+    def __init__(self) -> None:
         self.start = None
         self.__elapsed_time = None
 
     @property
-    def elapsed_time(self):
+    def elapsed_time(self) -> float:
         return self.__elapsed_time
 
-    def __enter__(self):
+    def __enter__(self) -> 'Timer':
         self.start = perf_counter()
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self, exc_type, exc_val, exc_tb) -> None:
         self.__elapsed_time = perf_counter() - self.start
 
 
