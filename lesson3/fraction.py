@@ -21,11 +21,11 @@ class Fraction:
     def __str__(self) -> str:
         return f'{self.numerator}/{self.denominator}'
 
-    def __add__(self, other: 'Fraction') -> str:
+    def __add__(self, other: 'Fraction') -> 'Fraction':
         lcm_ = lcm(self.denominator, other.denominator)
         numerator = (self.numerator * (lcm_ // self.denominator)) + (other.numerator * (lcm_ // other.denominator))
         gcd_ = gcd(numerator, lcm_)
-        return f'{numerator // gcd_}/{lcm_ // gcd_}'
+        return self.__class__((numerator // gcd_), (lcm_ // gcd_))
 
 
 fraction1 = Fraction(1, 2)
