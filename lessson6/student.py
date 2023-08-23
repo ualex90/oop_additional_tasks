@@ -10,7 +10,20 @@
 
 
 class Student:
-    pass
+    __slots__ = ('name', 'age', 'grades')
+
+    def __init__(self):
+        self.name = str()
+        self.age = int()
+        self.grades = list[int]
+
+
+class Course:
+    __slots__ = ('name', 'students')
+
+    def __init__(self):
+        self.name = str()
+        self.students = list[int]
 
 
 student1 = Student()

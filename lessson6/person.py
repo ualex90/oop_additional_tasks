@@ -14,7 +14,27 @@
 
 
 class Person:
-    pass
+    __slots__ = ('name', 'age')
+
+    def __init__(self):
+        self.name = None
+        self.age = None
+
+
+class Employee(Person):
+    __slots__ = ('salary',)
+
+    def __init__(self):
+        super().__init__()
+        self.salary = None
+
+
+class Manager(Employee):
+    __slots__ = ('bonus',)
+
+    def __init__(self):
+        super().__init__()
+        self.bonus = None
 
 
 person = Person()
